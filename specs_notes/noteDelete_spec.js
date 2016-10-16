@@ -1,0 +1,23 @@
+"use strict";
+
+
+describe ('Delete note', function() {
+
+    it('should delete a note in recycle bin', function() {
+        $('.form-control').click();
+        browser.sleep(2000);
+
+        let titleText = 'Test deleting note'
+        $$('.form-control').first().sendKeys(titleText);
+        browser.sleep(1000);
+        $('.btn').click();
+        browser.sleep(2000);
+        let titleNote = $('.panel-body.my-note')
+        expect(titleNote.isDisplayed()).toBe(true);
+        $('.fa.fa-trash').click();
+        browser.sleep(2000);
+        browser.get(browser.baseUrl + '/preserver/recycle-bin');
+        expect(titleNote.isPresent()).toBe(true);
+        browser.sleep(2000);
+    });
+});
