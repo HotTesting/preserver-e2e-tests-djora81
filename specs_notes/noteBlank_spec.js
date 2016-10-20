@@ -1,5 +1,7 @@
 "use strict";
 
+var MyNotes = require('../pageObjects/MyNotes.js');
+var RecycleNotes = require('../pageObjects/RecycleNotes.js');
 
 describe ('Create blank note', function() {
 

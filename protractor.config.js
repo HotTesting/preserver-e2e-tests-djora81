@@ -19,13 +19,16 @@ exports.config = {
     });
 
     afterEach(function () {
-       
-        browser.manage().deleteAllCookies();
-        browser.executeScript('window.sessionStorage.clear(); window.localStorage.clear();')
-        .then(undefined,
-        function (err) {
-            
-        });
+            browser.manage().deleteAllCookies();
+            browser.executeScript('window.sessionStorage.clear(); '
+                + 'window.localStorage.clear();'
+                + 'window.indexedDB.deleteDatabase("_pouch_bin_notes_table");'
+                + 'window.indexedDB.deleteDatabase("_pouch_archive_notes_table");')
+                .then(undefined,
+                    function (err) {
+                        // Errors will be thrown when browser is on default data URL.
+                        // Session and Local storage is disabled for data URLs
+                    });
     });
 
     let JasmineReporter = require('jasmine2-reporter').Jasmine2Reporter
