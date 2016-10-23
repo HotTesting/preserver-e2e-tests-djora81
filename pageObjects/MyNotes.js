@@ -7,6 +7,14 @@ class MyNotes extends BaseNotes {
         super();
     }
 
+    createNote(title, body) {
+        $('.form-control').click();
+        browser.sleep(2000);
+
+        $('.btn').click();
+        browser.sleep(2000);
+    }
+
 }
 
 module.exports = MyNotes;
